@@ -30,4 +30,4 @@ L'app è stata creata per offrire un'esperienza divinatoria interattiva e modern
 
 ## Demo link:
 
-https://lilux.dev/wp-content/tarot/?deck=ananke
+https://lilux.dev/tarotapp/?deck=ananke

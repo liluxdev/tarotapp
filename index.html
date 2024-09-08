@@ -1,0 +1,110 @@
+<html>
+<head>    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162544583-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-162544583-1', {'anonymize_ip': true});
+    </script>
+    <base href="/tarotapp">
+    <script src="/tarotapp/underscore.min.js?v=1"></script>
+    <script src="/tarotapp/jquery.min.js?v=2"></script>
+    <script src="/tarotapp/jquery.flip.js?v=2"></script>
+    <script src="/tarotapp/wSelect.min.js"></script>
+    <script src="/tarotapp/seedrandom.min.js?v=1"></script>
+    <script src="/tarotapp/main.js?v=10"></script>
+
+    <style>
+        @import url("/tarotapp/wSelect.css");
+        @import url("/tarotapp/style.css?v=10");
+    </style>
+
+    <!-- Primary Meta Tags -->
+    <title>Online TAROT table - Tavolo dei Tarocchi online - FREE</title>
+    <meta name="title" content="Online TAROT table - Tavolo dei Tarocchi online - FREE">
+    <meta name="description" content="APP IN FASE DI SVIULUPPO - ANTEPRIMA ">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://esoterika.it/apps/tarot">
+    <meta property="og:title" content="Online TAROT table - Tavolo dei Tarocchi online - FREE">
+    <meta property="og:description" content="APP IN FASE DI SVIULUPPO - ANTEPRIMA ">
+    <meta property="og:image" content="https://esoterika.it/apps/tarot/og-graph1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://esoterika.it/apps/tarot">
+    <meta property="twitter:title" content="Online TAROT table - Tavolo dei Tarocchi online - FREE">
+    <meta property="twitter:description" content="APP IN FASE DI SVIULUPPO - ANTEPRIMA ">
+    <meta property="twitter:image" content="https://esoterika.it/apps/tarot/og-graph1.png">
+</head>
+<body>
+
+   <div class="topoptions">
+        <div class="faboptions">
+            <select id="deckSelect" onchange="updateDeckSelection()">
+                <option value="">Select a deck / Seleziona un mazzo</option>
+                <option value="ananke">The Path of Ananke Tarots (Kingu Havoc and Siria del Sublime)</option>
+                <option value="rwpop1910">Raider Waite 1910</option>
+                <option value="rwbw">Raider Waite B/W</option>
+                <option value="marseilles">Marseille</option>
+                <option value="dva01">Doren Virtue - Oracolo delle Risposte degli Angeli</option>
+                <option value="dvamc">Doren Virtue - Arcangelo Michele</option>
+                <option value="iching">iChing - only numbers</option>
+                <option value="lotto">Lotto - only numbers</option>
+                <option value="goddessguidance">Goddess guidance</option>
+                <option value="stedivination">Personal (ste)</option>
+                <option value="crowley">Crowley</option>
+
+            </select>
+            <br/>
+            <button style="font-size:2.3vh; height: 5vh;" onClick="tarotDeck.startShuffling();" class="button">Mischia/Shuffle</button>
+            <br/>
+            <button style="font-size:2.3vh; height: 5vh;" onClick="tarotDeck.discardMinor();" class="button">Discard minor</button>
+            <br/>
+            <button style="font-size:2.3vh; height: 5vh;" onClick="tarotDeck.discardMajor();" class="button">Discard major</button>
+            <br/>
+            <button style="font-size:2.3vh; height: 5vh;" onClick="tarotDeck.cut();" class="button">Spacca/Cut</button>
+            <br/>
+            <button style="font-size:2.3vh; height: 5vh;" onClick="tarotDeck.filpAllCards();" class="button">Volta/Flip</button>
+            <br/>
+            <button style="font-size:2.3vh; height: 5vh;" onClick="tarotDeck.redeck();" class="button">Re-deck</button>
+        </div>
+    </div>
+ 
+    <div class="tarotTable"></div>
+    <div class="readingTable">drag cards here to read</div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Update the deck selection based on the URL parameter
+        function updateDeckSelection() {
+            var deckSelect = document.getElementById('deckSelect');
+            var selectedDeck = deckSelect.value;
+            location.href = location.pathname + '?deck=' + selectedDeck;
+        }
+
+        // Set the selected deck from the URL parameter when the page loads
+        window.onload = function() {
+            var currentDeck = getUrlParameter('deck');
+            if (currentDeck) {
+                document.getElementById('deckSelect').value = currentDeck;
+                tarotDeck.currentDeck = currentDeck;
+            }
+            tarotDeck.initCards();
+        };
+    </script>
+
+</body>
+</html>
