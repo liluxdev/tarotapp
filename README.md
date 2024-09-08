@@ -1,5 +1,7 @@
 # Tarot Deck App - README.md
 
+git submodule add  https://github.com/liluxdev/tarotapp.git ./public/tarotapp
+
 ## Overview
 La Tarot Deck App è un'applicazione web ottimizzata per desktop che simula un mazzo di tarocchi, offrendo una serie di controlli interattivi per una lettura personalizzata dei tarocchi. L'app è ideale per gli utenti che desiderano esplorare la tarologia in modo digitale, mantenendo l'essenza dell'esperienza tradizionale.
 
