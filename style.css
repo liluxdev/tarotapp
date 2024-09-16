@@ -65,10 +65,11 @@ body,html{
     width: 100%;
     min-height: 48vh;
 }
-.readingTable{
+.readingTable {
     will-change: height;
     transition: .23s linear all;
     border-top: 2px dotted green;
+    background: gainsboro;
 }
 
 .centeredCardNumber {
