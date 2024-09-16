@@ -54,7 +54,7 @@ var tarotDeck = {
             alwaysUpright: true,
             numberOfCards: 78,
             onlyNumbers: false,
-            backOfTheCardImgRelativeUrl: '/tarotapp/Back_of_the_card-512.png',
+            backOfTheCardImgRelativeUrl: '/tarotapp/decks/crowley/back.png',
             root: '/tarotapp/decks/crowley',
             prefixDigit: '',
             separator: '-',
@@ -479,8 +479,32 @@ var tarotDeck = {
         $(".tarotTable").click();
         $(".tarotTable .tarot-card").click();
     },
+    initRotatables: function () {
+        var params = {
+            // Callback fired on rotation start.
+            start: function(event, ui) {
+            },
+            // Callback fired during rotation.
+            rotate: function(event, ui) {
+            },
+            // Callback fired on rotation end.
+            stop: function(event, ui) {
+            },
+            // Set the rotation center
+            rotationCenterOffset: {
+                top: 20,
+                left: 20
+            },
+            transforms: {
+                translate: '50%, 50%',
+                scale: '2'
+                //any other transforms
+            }
+        };
+        $(".tarot-card").rotatable(params);
+    },
     initDraggables: function () {
-
+       // tarotDeck.initRotatables();
 
         if (tarotDeck.decks[tarotDeck.currentDeck].zoomableCards) {
             $(".tarot-card").addClass("zoomable");
